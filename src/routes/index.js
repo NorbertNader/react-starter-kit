@@ -17,6 +17,11 @@ const routes = {
   children: [
     {
       path: '',
+      load: () =>
+        import(/* webpackChunkName: 'github-users' */ './github-users'),
+    },
+    {
+      path: '/home',
       load: () => import(/* webpackChunkName: 'home' */ './home'),
     },
     {

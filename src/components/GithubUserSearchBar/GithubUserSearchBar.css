@@ -1,0 +1,46 @@
+.userSearchList {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  position: absolute;
+  z-index: 99;
+  width: 300px;
+  cursor: pointer;
+  background: #f5f5f5;
+  box-shadow: 0 0 5px;
+  border-radius: 2px;
+
+  li {
+    &:hover {
+      background: #d5d5d5;
+    }
+  }
+}
+
+.userSearchListItem {
+  padding: 5px 10px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.searchUserInput {
+  width: 100%;
+  border: 2px solid #a5a5a5;
+  border-radius: 2px;
+  padding: 8px 10px;
+  font-size: 15px;
+  color: #7e7e7e;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
