@@ -37,18 +37,23 @@ class GithubUserList extends React.Component {
   }
 
   render() {
-    const listItems = this.props.users.map(user => (
-      <li key={user.id} className={s.userListItem}>
-        @{user.login}
-        <button
-          data-id={user.id}
-          onClick={this.removeUser}
-          className={s.removeUserButton}
-        >
-          X
-        </button>
-      </li>
-    ));
+    const listItems = this.props.users.map(user => {
+      const liUid = `li-${user.id}`;
+      const buttonUid = `button-${user.id}`;
+      return (
+        <li key={liUid} className={s.userListItem}>
+          @{user.login}
+          <button
+            data-id={user.id}
+            onClick={this.removeUser}
+            className={s.removeUserButton}
+            key={buttonUid}
+          >
+            X
+          </button>
+        </li>
+      );
+    });
     return <ul className={s.userList}>{listItems}</ul>;
   }
 }

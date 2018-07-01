@@ -76,6 +76,7 @@ class GithubUserSearchBar extends React.Component {
    * @param e
    */
   addUser(e) {
+    e.target = e.currentTarget;
     this.props.addUser(e.target.dataset.id, e.target.dataset.login);
     this.setState({ users: [] });
   }
