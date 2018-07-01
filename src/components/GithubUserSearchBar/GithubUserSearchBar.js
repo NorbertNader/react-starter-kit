@@ -90,7 +90,7 @@ class GithubUserSearchBar extends React.Component {
         const buttonUid = `user-search-${user.id}`;
         const highlightUid = `highlight-${user.id}`;
         const highlightedText = `${user.login}`
-          .split(new RegExp(`(${input.value})`, 'i'))
+          .split(new RegExp(`^(${input.value})`, 'i'))
           .map(match => {
             if (match.toLowerCase() === input.value.toLowerCase())
               return <b key={highlightUid}>{input.value}</b>;
