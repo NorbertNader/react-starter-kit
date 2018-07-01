@@ -23,6 +23,7 @@ class GithubUserSearchBar extends React.Component {
     this.state = { users: [] };
     this.getUsers = this.getUsers.bind(this);
     this.addUser = this.addUser.bind(this);
+    this.input = React.createRef();
   }
 
   componentDidMount() {
@@ -81,10 +82,19 @@ class GithubUserSearchBar extends React.Component {
 
   render() {
     let dropdownList;
+    const input = this.input.current;
     if (this.state.users.length) {
       const listItems = this.state.users.map(user => {
         const liUid = `user-search-${user.id}`;
         const buttonUid = `user-search-${user.id}`;
+        const highlightUid = `highlight-${user.id}`;
+        const highlightedText = `${user.login}`
+          .split(new RegExp(`(${input.value})`, 'i'))
+          .map(match => {
+            if (match.toLowerCase() === input.value.toLowerCase())
+              return <b key={highlightUid}>{input.value}</b>;
+            return match;
+          });
         return (
           <li key={liUid}>
             <button
@@ -94,7 +104,7 @@ class GithubUserSearchBar extends React.Component {
               onClick={this.addUser}
               className={s.userSearchListItem}
             >
-              @{user.login}
+              @{highlightedText}
             </button>
           </li>
         );
@@ -110,6 +120,7 @@ class GithubUserSearchBar extends React.Component {
           type="text"
           autoComplete="off"
           onInput={this.getUsers}
+          ref={this.input}
         />
         {dropdownList}
       </form>
